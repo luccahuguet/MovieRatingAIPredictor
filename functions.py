@@ -35,9 +35,7 @@ def format_input2(user_specific_movie_data):
         for genre in data_genres:
             row_genres.append(genre["name"])
 
-        # print(f"row_genres = {row_genres}")
         for c5, gen in enumerate(genre_types):
-            # print(f"gen  = {gen}")
             inputs.loc[counter][gen] = 1 if gen in row_genres else 0
         for num_param in continuous_params:
             inputs.loc[counter][num_param] = user_data_row[num_param]
@@ -78,7 +76,7 @@ def get_user_specific_movie_data(user_specific_ratings, movie_data):
     counter2 = 0
     inputs = []
 
-    user_specific_movie_data = []  # [""] * len(user_specific_ratings)
+    user_specific_movie_data = []
 
     for counter, this_rating in enumerate(user_specific_ratings):
         movie_data_row = [
@@ -90,14 +88,5 @@ def get_user_specific_movie_data(user_specific_ratings, movie_data):
             this_rating.update(movie_data_row)
             user_specific_movie_data.append(this_rating)
 
-        # print(f"movie_data_row2 = {movie_data_row} \n")
-        # print(user_specific_movie_data)
 
     return user_specific_movie_data
-
-    # with open(mov, newline="", errors="ignore") as csvfile:
-    #     spamreader = csv.DictReader(csvfile, delimiter=",")
-    #     for counter, row in enumerate(spamreader):
-    #         if counter > lower_limit:
-    #             user_specific_movie_data.append(row)
-    #     return user_specific_movie_data
